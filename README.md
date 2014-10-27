@@ -45,3 +45,5 @@ $.ajax({
 ### Output
 ![screen shot 2014-10-27 at 8 33 49 am](https://cloud.githubusercontent.com/assets/512243/4791528/f5086486-5ddd-11e4-9a7b-cf097f02a294.png)
 
+### Field explanation
+![viz_entity_explanation](https://cloud.githubusercontent.com/assets/512243/4800527/327bbd06-5e27-11e4-9332-20eead9c9b9a.png)
