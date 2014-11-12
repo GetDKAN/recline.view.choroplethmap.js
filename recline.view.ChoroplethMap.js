@@ -558,7 +558,10 @@ this.recline.View = this.recline.View || {};
       });
       if (n > 0) {
         n = self.avg ? n : 1;
-        v = parseInt(v / n, 10);
+        v = parseFloat(v/n);
+      }
+      if (v% 1 != 0) {
+        v = v.toFixed(2);
       }
 
       return Mustache.render(
