@@ -2,6 +2,9 @@
  * @file
  * ChoroplethMap recline view implementation.
  */
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
 
 this.recline = this.recline || {};
 this.recline.View = this.recline.View || {};
@@ -60,7 +63,7 @@ this.recline.View = this.recline.View || {};
       this.map_column = options.map_column ? options.map_column.toLowerCase() : '';
 
       this.geojson_key = options.geojson_key ? options.geojson_key : 'CODE';
-      this.geojson_label = options.geojson_label ? options.geojson_label : '';
+      this.geojson_label = options.geojson_label ? options.geojson_label : options.geojson_key;
 
       // Mapping fields headers with row indexes.
       this.fields_map = [];
@@ -520,7 +523,7 @@ this.recline.View = this.recline.View || {};
               return this._div;
           },
           update: function(value) {
-              this._div.innerHTML = value ? value : 'Hover over a state';
+              this._div.innerHTML = value ? value : 'Hover over a ' + self.map_column.capitalize();
           },
       });
       this.info = new InfoControl();
@@ -558,7 +561,9 @@ this.recline.View = this.recline.View || {};
       });
       if (n > 0) {
         n = self.avg ? n : 1;
-        v = parseInt(v / n, 10);
+        v = v / n;
+        v = v.toFixed(2);
+        v = parseFloat(v, 10);
       }
 
       return Mustache.render(
